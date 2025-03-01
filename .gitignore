@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Python files
+finetune_reviewer.py
+generate_reviews.py
+inference_reviewer.py
+

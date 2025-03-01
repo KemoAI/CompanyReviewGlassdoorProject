@@ -1,0 +1,25 @@
+pandas
+nltk
+lingua-language-detector
+hrequests[all]
+tqdm
+openai
+seaborn
+scipy
+aiohttp
+transformers
+huggingface_hub
+trl
+scikit-learn
+wandb
+peft
+datasets
+rouge_score
+evaluate
+sentencepiece
+bert_score
+typing_extensions
+bitsandbytes
+shap
+
+-e .
