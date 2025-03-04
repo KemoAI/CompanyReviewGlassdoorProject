@@ -1,0 +1,1 @@
+from CompanyReview.config.configuration import ConfigurationManager
