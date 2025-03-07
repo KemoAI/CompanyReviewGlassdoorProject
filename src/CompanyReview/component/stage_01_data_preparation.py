@@ -4,11 +4,11 @@ import pandas as pd
 from CompanyReview import logger
 from pathlib import Path
 from tqdm import tqdm
-from CompanyReview.entity.config_entity import DataLoadingConfig
+from CompanyReview.entity.config_entity import DataSourceConfig
 from CompanyReview.utils import utils
 
 class DataPreparation:
-    def __init__(self, config:DataLoadingConfig):
+    def __init__(self, config:DataSourceConfig):
         self.config = config
     
     def build_dataframe(self):
@@ -166,7 +166,7 @@ class DataPreparation:
         text = re.sub('\xc4\xb1', '|', text)
         return text.strip()
     
-    def dataframe_preprocessing(self, pdf:pd.DataFrame):
+    def data_engineering(self, pdf:pd.DataFrame):
         pdf.drop("pros" , axis=1 , inplace=True)
         pdf.drop("cons" , axis=1 , inplace=True)
         pdf = pdf.rename(columns={"org_pros": "pros", "org_cons": "cons"})[['pros', 'cons', 'overall-ratings']]
@@ -174,5 +174,5 @@ class DataPreparation:
         pdf["cons"] = pdf["cons"].apply(self.__clean_text)
         return pdf
     
-    def save_dataframe(self, pdf:pd.DataFrame):
+    def save_generated_reviews(self, pdf:pd.DataFrame):
         pdf.to_csv(self.config.processed_data_path , index=False)

@@ -3,3 +3,6 @@ data_root: data
 data_source:
   root_data_path: data/sampled_data.csv
   processed_data_path: data/processed.csv
+
+generated_reviews:
+  generated_reviews_path: data/generated_reviews.csv
