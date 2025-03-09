@@ -3,7 +3,6 @@ import re
 import pandas as pd
 from CompanyReview import logger
 from pathlib import Path
-from tqdm import tqdm
 from CompanyReview.entity.config_entity import DataSourceConfig
 from CompanyReview.utils import utils
 
@@ -174,5 +173,5 @@ class DataPreparation:
         pdf["cons"] = pdf["cons"].apply(self.__clean_text)
         return pdf
     
-    def save_generated_reviews(self, pdf:pd.DataFrame):
+    def save_processed_data(self, pdf:pd.DataFrame):
         pdf.to_csv(self.config.processed_data_path , index=False)

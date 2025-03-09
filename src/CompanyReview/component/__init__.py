@@ -1,1 +1,2 @@
 from CompanyReview.component.stage_01_data_preparation import DataPreparation
+from CompanyReview.component.stage_02_agentic_framework import GenerateReview

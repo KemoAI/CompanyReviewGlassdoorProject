@@ -12,15 +12,18 @@ Response: """
 
 COMPOSER_AGENT_MODEL = "deepseek-reasoner"
 COMPOSER_AGENT_URL   = "https://api.deepseek.com"
-
+DEEPSEEK_KEY         = "Write your Api Key"
 
 CRITIC_AGENT_QUERY   = """Pros: {}
 Cons: {}
 Review: {}
 
 Evaluate the provided company "Review" to confirm whether it accurately reflects the sentiment expressed in the "Pros" and "Cons." Your evaluation should focus on the following criteria: Accuracy (Does it accurately represent sentiment, tone, and key points from "Pros" and "Cons"?), Inclusiveness (Does it cover significant aspect without overemphasizing nor omitting any points?), Clarity and Precision (Is it straightforward, concise, and free from vagueness?). Respond with Y if it needs improvement or N if it meets the criteria. In a newline, assign a percentage score (0-100) of how much the review aligns with the criteria. If your response is Y, provide specific feedback, suggestions, and concerns after another new line, focusing on how the review could be improved to better align with the criteria. Do not rewrite or attempt to modify the review in your response."""
-CRITIC_AGENT_MODEL  = "https://api.openai.com/v1"
-CRITIC_AGENT_URL    = "gpt-4o"
+
+CRITIC_AGENT_URL   = "https://api.openai.com/v1"
+CRITIC_AGENT_MODEL = "gpt-4o"
+OPENAI_KEY         = "Write you Api Key"
+
 
 
 
