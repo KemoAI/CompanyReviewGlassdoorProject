@@ -176,4 +176,5 @@ generate_reviews.py
 inference_reviewer.py
 Lap.ipynb
 data/
+downloaded_models/
 

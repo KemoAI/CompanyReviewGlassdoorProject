@@ -1,6 +1,6 @@
 from CompanyReview.utils.utils import read_yaml
-from CompanyReview.entity.config_entity import DataSourceConfig , AgenticFrameworkConfig
-from CompanyReview.constants import CONFIG_FILE_PATH , PARAMS_FILE_PATH , COMPOSER_AGENT_QUERY , COMPOSER_AGENT_MODEL , COMPOSER_AGENT_URL, DEEPSEEK_KEY , CRITIC_AGENT_QUERY , CRITIC_AGENT_MODEL , CRITIC_AGENT_URL, OPENAI_KEY
+from CompanyReview.entity.config_entity import DataSourceConfig , AgenticFrameworkConfig , FineTuningConfig
+from CompanyReview.constants import CONFIG_FILE_PATH , PARAMS_FILE_PATH , COMPOSER_AGENT_QUERY , COMPOSER_AGENT_MODEL , COMPOSER_AGENT_URL, DEEPSEEK_KEY , CRITIC_AGENT_QUERY , CRITIC_AGENT_MODEL , CRITIC_AGENT_URL, OPENAI_KEY, HUGGINGFACE_TOKEN, WANDB_TOKEN
 from pathlib import Path
 import os
 
@@ -35,3 +35,43 @@ class ConfigurationManager:
                                                             temperature              = self.params.TEMPERATURE,
                                                          )
         return agentic_framework_config
+    
+    def get_finetune_config(self):
+        gen_config = self.config.generated_reviews
+        finetune_config  = FineTuningConfig (
+                                                model_name_or_path          = self.params.MODEL_NAME_OR_PATH           ,
+                                                cache_dir                   = self.params.CACHE_DIR                    ,
+                                                lora_rank                   = self.params.LORA_RANK                    ,                  # lora flags
+                                                lora_alpha                  = self.params.LORA_ALPHA                   ,
+                                                lora_dropout                = self.params.LORA_DROPOUT                 ,  
+                                                processed_data_path         = gen_config.generated_reviews_path        ,                  # data flags
+                                                composer_agent_query        = COMPOSER_AGENT_QUERY                     ,
+                                                train_ratio                 = self.params.TRAIN_RATIO                  ,
+                                                val_ratio                   = self.params.VAL_RATIO                    ,
+                                                test_ratio                  = self.params.TEST_RATIO                   ,
+                                                seed                        = self.params.SEED                         ,
+                                                output_dir                  = self.params.OUTPUT_DIR                   ,                  # training args
+                                                epochs                      = self.params.EPOCHS                       ,
+                                                gradient_accumulation_steps = self.params.GRADIENT_ACCUMULATION_STEPS  ,
+                                                per_device_train_batch_size = self.params.PER_DEVICE_TRAIN_BATCH_SIZE  ,
+                                                per_device_eval_batch_size  = self.params.PER_DEVICE_EVAL_BATCH_SIZE   ,
+                                                gradient_checkpointing      = self.params.GRADIENT_CHECKPOINTING       ,
+                                                eval_strategy               = self.params.EVAL_STRATEGY                ,
+                                                eval_steps                  = self.params.EVAL_STEPS                   ,
+                                                logging_steps               = self.params.LOGGING_STEPS                ,
+                                                save_strategy               = self.params.SAVE_STRATEGY                ,
+                                                save_limit                  = self.params.SAVE_LIMIT                   ,
+                                                save_steps                  = self.params.SAVE_STEPS                   ,
+                                                lr                          = self.params.LR                           ,
+                                                warmup_steps                = self.params.WARMUP_STEPS                 ,
+                                                lr_scheduler_type           = self.params.LR_SCHEDULER_TYPE            ,
+                                                max_grad_norm               = self.params.MAX_GRAD_NORM                ,
+                                                use_best                    = self.params.USE_BEST                     ,
+                                                push_to_hub                 = self.params.PUSH_TO_HUB                  ,
+                                                report_to                   = self.params.REPORT_TO                    ,
+                                                distributed_training        = self.params.DISTRIBUTED_TRAINING         ,
+                                                huggingface_token           = HUGGINGFACE_TOKEN             ,
+                                                wandb_token                 = WANDB_TOKEN
+                                         )
+
+        return finetune_config 

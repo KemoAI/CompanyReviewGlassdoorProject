@@ -20,3 +20,39 @@ class AgenticFrameworkConfig:
     openai_api_key: str
     max_concurrent_requests: int
     temperature: float
+
+@dataclass(frozen=False)
+class FineTuningConfig:
+    model_name_or_path: str
+    cache_dir: str
+    lora_rank: int                            #LoRa flags
+    lora_alpha: int
+    lora_dropout: float  
+    processed_data_path: str                  #Data flags
+    composer_agent_query: str
+    train_ratio: float
+    val_ratio: float
+    test_ratio: float
+    seed: int
+    output_dir: str                    #Training args
+    epochs: int
+    gradient_accumulation_steps: int
+    per_device_train_batch_size: int
+    per_device_eval_batch_size: int
+    gradient_checkpointing: bool
+    eval_strategy: str
+    eval_steps: int
+    logging_steps: int
+    save_strategy: str
+    save_limit: int
+    save_steps: int
+    lr: float
+    warmup_steps: int
+    lr_scheduler_type: str
+    max_grad_norm: float
+    use_best: bool
+    push_to_hub: bool
+    report_to: str
+    distributed_training: bool
+    huggingface_token: str             # Tokens
+    wandb_token: str

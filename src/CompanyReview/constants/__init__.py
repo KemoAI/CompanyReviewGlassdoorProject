@@ -12,7 +12,7 @@ Response: """
 
 COMPOSER_AGENT_MODEL = "deepseek-reasoner"
 COMPOSER_AGENT_URL   = "https://api.deepseek.com"
-DEEPSEEK_KEY         = "Write your Api Key"
+DEEPSEEK_KEY         = "Enter Your Deepseek API Key Here"
 
 CRITIC_AGENT_QUERY   = """Pros: {}
 Cons: {}
@@ -22,7 +22,13 @@ Evaluate the provided company "Review" to confirm whether it accurately reflects
 
 CRITIC_AGENT_URL   = "https://api.openai.com/v1"
 CRITIC_AGENT_MODEL = "gpt-4o"
-OPENAI_KEY         = "Write you Api Key"
+OPENAI_KEY         = "Enter Your OpenAI API Key Here"
+
+
+HUGGINGFACE_TOKEN  = "Enter Your Huggingface API Token Here"             
+WANDB_TOKEN        = "Enter Your Wandb API Token Here"
+
+
 
 
 

@@ -23,7 +23,7 @@ except RuntimeError:
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
-generated_reviews = loop.run_until_complete(agent_build.generate_reviews(df.to_dict("records")[:20]))
+generated_reviews = loop.run_until_complete(agent_build.generate_reviews(df.to_dict("records")[:5]))
 generated_reviews = pd.DataFrame(generated_reviews)
 generated_reviews = generated_reviews.sort_values(by=['index'], ascending=True).reset_index(drop=True)
 agent_build.save_generated_reviews(generated_reviews)
