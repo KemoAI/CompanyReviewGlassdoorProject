@@ -5,4 +5,4 @@ data_source:
   processed_data_path: data/processed.csv
 
 generated_reviews:
-  generated_reviews_path: data/generated_reviews.csv
+  generated_reviews_path: data/final_reviews_cleaned_r1.csv

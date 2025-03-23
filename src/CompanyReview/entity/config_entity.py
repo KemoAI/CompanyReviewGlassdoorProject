@@ -56,3 +56,28 @@ class FineTuningConfig:
     distributed_training: bool
     huggingface_token: str             # Tokens
     wandb_token: str
+
+@dataclass(frozen=False)
+class InferenceConfig:
+    checkpoint_path: str
+    cache_dir: str
+    baseline: bool
+    use_quantization: bool
+    generated_data_path: str                  #Data flags
+    composer_agent_query: str
+    train_ratio: float
+    val_ratio: float
+    test_ratio: float
+    seed: int
+    inference_subset: list
+    results_path: str
+    per_device_batch_size: int
+    max_new_tokens: int 
+    temperature: float
+    top_p: float
+    top_k: int
+    num_return_sequences: int
+    num_beams: int
+    repetition_penalty: float
+    no_repeat_ngram_size: int
+    huggingface_token: str

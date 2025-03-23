@@ -177,4 +177,6 @@ inference_reviewer.py
 Lap.ipynb
 data/
 downloaded_models/
+llama-3.1-8B-finetuned/
+Inference/
 

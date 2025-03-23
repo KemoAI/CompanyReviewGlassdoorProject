@@ -58,7 +58,7 @@ class ModelDistillation:
         """This method loads the dataset from a csv file and splits it"""
 
         data         = pd.read_csv(self.config.processed_data_path)
-        data['text'] = data.apply(self.config.composer_agent_query, axis=1)
+        data['text'] = data.apply(lambda record: self.config.composer_agent_query.format(record['pros'],record['cons']), axis=1)
         data         = data.rename(columns={"company-review": "label"})
         y            = data['overall-ratings'].tolist()
         data         = data[['text', 'label']].astype(str)
@@ -76,13 +76,13 @@ class ModelDistillation:
         
         return reviews_dataset
 
-    def __formatting_prompts_func(self):
+    def __formatting_prompts_func(self, example):
         """Formats the prompts for LLM training
         reference: https://huggingface.co/docs/trl/sft_trainer#format-your-input-prompts
         """
         output_texts = []
-        for i in range(len(self.config.processed_data_path['text'])):
-            text = f"### Task: {self.config.processed_data_path['text'][i]}\n### Response: {self.config.processed_data_path['label'][i]}"
+        for i in range(len(example['text'])):
+            text = f"### Task: {example['text'][i]}\n### Response: {example['label'][i]}"
             output_texts.append(text)
         return output_texts
     
