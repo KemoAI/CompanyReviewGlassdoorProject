@@ -6,13 +6,15 @@ import time
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
-from huggingface_hub import login
 
 import torch
 from datasets import Dataset, DatasetDict
 from peft import AutoPeftModelForCausalLM
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, BitsAndBytesConfig
 from sklearn.model_selection import train_test_split
+
+import wandb
+from huggingface_hub import login
 
 from CompanyReview import logger
 from CompanyReview.entity.config_entity import InferenceConfig
@@ -173,4 +175,3 @@ class ModelInference:
 
         with open(join(self.config.results_path, f'inference_{self.config.inference_subset[0]}_time.txt'), "w") as text_file:
             text_file.write(f"Time taken is {hh:02}:{mm:02}:{ss:.2f}")
-    

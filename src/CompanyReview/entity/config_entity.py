@@ -35,7 +35,7 @@ class FineTuningConfig:
     test_ratio: float
     seed: int
     output_dir: str                    #Training args
-    epochs: int
+    num_epochs: int
     gradient_accumulation_steps: int
     per_device_train_batch_size: int
     per_device_eval_batch_size: int
@@ -81,3 +81,24 @@ class InferenceConfig:
     repetition_penalty: float
     no_repeat_ngram_size: int
     huggingface_token: str
+@dataclass(frozen=False)
+class ClassificationConfig:
+    wandb_project: str
+    run_name: str
+    inferred_path: str
+    output_dir: str
+    num_epochs: int
+    lr: float
+    warmup_ratio: float
+    lr_scheduler_type: str
+    per_device_train_batch_size: int
+    per_device_eval_batch_size:  int
+    eval_strategy: str
+    eval_steps: int
+    save_steps: int
+    logging_steps: int
+    save_strategy: str
+    save_limit: int
+    use_best: bool
+    report_to: str
+    cache_dir: str

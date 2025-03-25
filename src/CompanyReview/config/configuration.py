@@ -1,5 +1,5 @@
 from CompanyReview.utils.utils import read_yaml
-from CompanyReview.entity.config_entity import DataSourceConfig , AgenticFrameworkConfig , FineTuningConfig , InferenceConfig
+from CompanyReview.entity.config_entity import DataSourceConfig , AgenticFrameworkConfig , FineTuningConfig , InferenceConfig, ClassificationConfig
 from CompanyReview.constants import CONFIG_FILE_PATH , PARAMS_FILE_PATH , COMPOSER_AGENT_QUERY , COMPOSER_AGENT_MODEL , COMPOSER_AGENT_URL, DEEPSEEK_KEY , CRITIC_AGENT_QUERY , CRITIC_AGENT_MODEL , CRITIC_AGENT_URL, OPENAI_KEY, HUGGINGFACE_TOKEN, WANDB_TOKEN
 from pathlib import Path
 import os
@@ -51,7 +51,7 @@ class ConfigurationManager:
                                                 test_ratio                  = self.params.TEST_RATIO                   ,
                                                 seed                        = self.params.SEED                         ,
                                                 output_dir                  = self.params.OUTPUT_DIR                   ,                  # training args
-                                                epochs                      = self.params.EPOCHS                       ,
+                                                num_epochs                  = self.params.EPOCHS                       ,
                                                 gradient_accumulation_steps = self.params.GRADIENT_ACCUMULATION_STEPS  ,
                                                 per_device_train_batch_size = self.params.PER_DEVICE_TRAIN_BATCH_SIZE  ,
                                                 per_device_eval_batch_size  = self.params.PER_DEVICE_EVAL_BATCH_SIZE   ,
@@ -103,3 +103,30 @@ class ConfigurationManager:
                                             huggingface_token    = HUGGINGFACE_TOKEN
                                           )
         return inference_config
+
+    def get_classification_config(self):
+        inferred_config       = self.config.inferred_reviews
+        classification_config = ClassificationConfig(
+                                                        wandb_project               = self.params.WANDB_PROJECT,
+                                                        run_name                    = self.params.RUN_NAME,
+                                                        inferred_path               = inferred_config.inferred_reviews_path,
+                                                        output_dir                  = 'deberta-finetuned-from-llama-8b',
+                                                        num_epochs                  = 4,
+                                                        lr                          = 3e-6,
+                                                        warmup_ratio                = self.params.WARMUP_RATIO,
+                                                        lr_scheduler_type           = self.params.LR_SCHEDULER_TYPE,
+                                                        per_device_train_batch_size = 16,
+                                                        per_device_eval_batch_size  = 16,
+                                                        eval_strategy               = self.params.EVAL_STRATEGY,
+                                                        eval_steps                  = self.params.EVAL_STEPS,
+                                                        save_steps                  = self.params.SAVE_STEPS, 
+                                                        logging_steps               = self.params.LOGGING_STEPS, 
+                                                        save_strategy               = self.params.SAVE_STRATEGY,
+                                                        save_limit                  = self.params.SAVE_LIMIT,
+                                                        use_best                    = self.params.USE_BEST,
+                                                        report_to                   = self.params.REPORT_TO,
+                                                        cache_dir                   = self.params.CACHE_DIR
+                                                    )
+        return classification_config
+
+    

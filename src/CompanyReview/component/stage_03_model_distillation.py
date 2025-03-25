@@ -15,6 +15,9 @@ from accelerate import PartialState
 from peft import LoraConfig , TaskType ,  get_peft_model
 from sklearn.model_selection import train_test_split
 
+import wandb
+from huggingface_hub import login
+
 from CompanyReview import logger
 from CompanyReview.entity.config_entity import FineTuningConfig
 from CompanyReview.utils import utils
@@ -90,7 +93,7 @@ class ModelDistillation:
         if self.config.distributed_training:                 # multiple GPUs
             training_args = TrainingArguments(
                                                 output_dir                    = self.config.output_dir,                     # experiment directory
-                                                num_train_epochs              = self.config.epochs,                         # number of training epochs
+                                                num_train_epochs              = self.config.num_epochs,                         # number of training epochs
                                                 gradient_accumulation_steps   = self.config.gradient_accumulation_steps,    # number of steps before performing a backward/update pass
                                                 per_device_train_batch_size   = self.config.per_device_train_batch_size,    # batch size per device during training
                                                 per_device_eval_batch_size    = self.config.per_device_eval_batch_size,     # batch size per device during evaluation          
@@ -113,7 +116,7 @@ class ModelDistillation:
         else:
             training_args = TrainingArguments(
                                                 output_dir                   = self.config.output_dir,                      # experiment directory
-                                                num_train_epochs             = self.config.epochs,                          # number of training epochs           
+                                                num_train_epochs             = self.config.num_epochs,                          # number of training epochs           
                                                 gradient_accumulation_steps  = self.config.gradient_accumulation_steps,     # number of steps before performing a backward/update pass
                                                 per_device_train_batch_size  = self.config.per_device_train_batch_size,     # batch size per device during training
                                                 per_device_eval_batch_size   = self.config.per_device_eval_batch_size,      # batch size per device during evaluation
