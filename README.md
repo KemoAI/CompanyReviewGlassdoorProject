@@ -1,4 +1,5 @@
 ## Review Companies Using Employee Sentiments
+Inspired by the innate and natural process of human reasoning which enhances model’s reasoning ability by generating and refining rationales. Our framework orchestrates a dialogue between two distinct yet harmonized agents. By fostering a synergistic interplay between two LLMs, each taking on distinct roles. DeepSeek-R1, as the Composer, emerges as the architect, crafting insightful reviews, while GPT-4o, serves and acts as a discerning critic to achieve nuanced company reviews derived from employee feedback through an iterative, dynamic discours.
 
 #### Architectural Overview:
 We utilize a dual-agent AI framework featuring distinct models to counteract and mitigate its effects:
@@ -14,6 +15,8 @@ We utilize a dual-agent AI framework featuring distinct models to counteract and
 The architecture depicts the end-to-end pipeline: 
 - Dual-Agent Framework 
 - Model Distillation 
+ - LLaMA 3.1 8B
 - Model Classification
+ - DeBERTa-V3
 
 ![](diagram/EndtoEnd.png "End-to-End Pipeline")
