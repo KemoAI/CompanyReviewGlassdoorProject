@@ -1,6 +1,7 @@
 # Review Companyies Using Employee Sentiments
 
 #### The Collaborative Dual Agent Framework: An Architectural Overview:
+Recognizing the risk of inductive bias, we utilize a dual-agent AI framework featuring distinct models to counteract and mitigate its effects:
 
 - Composer Agent:
   - DeepSeek-R1
