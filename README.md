@@ -11,4 +11,9 @@ Recognizing the risk of inductive bias, we utilize a dual-agent AI framework fea
 ![](diagram/DualAgentFramework.png "Dual Agent Framework")
 
 #### The End-to-End Pipeline
+The architecture depicts the end-to-end pipeline: 
+- Dual-Agent Framework 
+- Model Distillation 
+- Model Classification
+
 ![](diagram/EndtoEnd.png "End-to-End Pipeline")
