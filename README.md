@@ -1,6 +1,6 @@
 ## Review Companyies Using Employee Sentiments
 
-#### The Collaborative Dual Agent Framework: An Architectural Overview:
+#### Architectural Overview:
 We utilize a dual-agent AI framework featuring distinct models to counteract and mitigate its effects:
 
 - Composer Agent:
