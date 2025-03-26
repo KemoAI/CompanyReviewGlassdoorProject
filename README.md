@@ -1,7 +1,7 @@
 # Review Companyies Using Employee Sentiments
 
 #### The Collaborative Dual Agent Framework: An Architectural Overview:
-<!-- - Features to appear in the next version (currently in the master branch): -->
+
 - Composer Agent:
   - DeepSeek-R1
 - Critic Agent:
