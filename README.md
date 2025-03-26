@@ -1,11 +1,11 @@
 # Review Companyies Using Employee Sentiments
 
 #### The Collaborative Dual Agent Framework: An Architectural Overview:
-    
-    - Composer Agent:
-      - DeepSeek-R1
-    - Critic Agent:
-      - GPT-4o
+<!-- - Features to appear in the next version (currently in the master branch): -->
+- Composer Agent:
+  - DeepSeek-R1
+- Critic Agent:
+  - GPT-4o
 
 ![](diagram/DualAgentFramework.png "Dual Agent Framework")
 
