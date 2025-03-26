@@ -1,4 +1,4 @@
-## Review Companyies Using Employee Sentiments
+## Review Companies Using Employee Sentiments
 
 #### Architectural Overview:
 We utilize a dual-agent AI framework featuring distinct models to counteract and mitigate its effects:
