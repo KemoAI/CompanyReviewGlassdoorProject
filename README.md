@@ -15,8 +15,8 @@ We utilize a dual-agent AI framework featuring distinct models to counteract and
 The architecture depicts the end-to-end pipeline: 
 - Dual-Agent Framework 
 - Model Distillation 
- - LLaMA 3.1 8B
+  - LLaMA 3.1 8B
 - Model Classification
- - DeBERTa-V3
+  - DeBERTa-V3
 
 ![](diagram/EndtoEnd.png "End-to-End Pipeline")
