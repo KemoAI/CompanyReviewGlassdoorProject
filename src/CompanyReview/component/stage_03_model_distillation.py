@@ -60,7 +60,7 @@ class ModelDistillation:
     def get_dataset(self):
         """This method loads the dataset from a csv file and splits it"""
 
-        data         = pd.read_csv(self.config.processed_data_path)
+        data         = pd.read_csv(self.config.generated_data_path)
         data['text'] = data.apply(lambda record: self.config.composer_agent_query.format(record['pros'],record['cons']), axis=1)
         data         = data.rename(columns={"company-review": "label"})
         y            = data['overall-ratings'].tolist()

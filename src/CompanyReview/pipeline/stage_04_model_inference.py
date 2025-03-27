@@ -14,7 +14,7 @@ inferred_dataset  = inference_model.get_dataset()
 distributed_state = PartialState()
 num_processes     = distributed_state.num_processes
 inferred_pipline  = inference_model.get_pipeline(distributed_state.device)
-inferred_batches  = inference_model.get_index_batches()
+inferred_batches  = inference_model.get_index_batches(inferred_dataset)
 start_time        = time.time()
 inference_model.save_inferrance_result(distributed_state , inferred_pipline  , inferred_batches)
 

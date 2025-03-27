@@ -28,7 +28,7 @@ class FineTuningConfig:
     lora_rank: int                            #LoRa flags
     lora_alpha: int
     lora_dropout: float  
-    processed_data_path: str                  #Data flags
+    generated_data_path: str                  #Data flags
     composer_agent_query: str
     train_ratio: float
     val_ratio: float

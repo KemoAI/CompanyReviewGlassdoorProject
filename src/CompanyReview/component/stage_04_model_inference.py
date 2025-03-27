@@ -46,6 +46,7 @@ class ModelInference:
             end_index   = min((i + 1) * batch_size, len(items))
             batch       = items[start_index:end_index]
             batches.append(batch)
+        return batches
     
     def get_dataset(self):
         """This method loads the dataset from a csv file and splits it"""
@@ -118,7 +119,7 @@ class ModelInference:
                                    top_p                = self.config.top_p                 , 
                                    top_k                = self.config.top_k                 , 
                                    temperature          = self.config.temperature           ,
-                                   num_beams            = self.config.num_beam              ,
+                                   num_beams            = self.config.num_beams             ,
                                    num_return_sequences = self.config.num_return_sequences  ,
                                    eos_token_id         = pipeline.tokenizer.eos_token_id   ,
                                    pad_token_id         = pipeline.tokenizer.pad_token_id)
