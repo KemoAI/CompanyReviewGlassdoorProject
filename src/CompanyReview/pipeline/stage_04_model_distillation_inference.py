@@ -3,7 +3,7 @@ from accelerate import PartialState
 
 from CompanyReview import logger
 from CompanyReview.config import ConfigurationManager
-from CompanyReview.component.stage_04_model_inference import ModelInference
+from CompanyReview.component.stage_04_model_distillation_inference import ModelInference
 
 logger.info(f"Inference started")
 
