@@ -1,5 +1,5 @@
 from CompanyReview.utils.utils import read_yaml
-from CompanyReview.entity.config_entity import DataSourceConfig , AgenticFrameworkConfig , FineTuningConfig , InferenceConfig, ClassificationConfig
+from CompanyReview.entity.config_entity import DataSourceConfig , AgenticFrameworkConfig , FineTuningConfig , DistillationInferenceConfig, ClassificationConfig, ClassificationInferenceConfig
 from CompanyReview.constants import CONFIG_FILE_PATH , PARAMS_FILE_PATH , COMPOSER_AGENT_QUERY , COMPOSER_AGENT_MODEL , COMPOSER_AGENT_URL, DEEPSEEK_KEY , CRITIC_AGENT_QUERY , CRITIC_AGENT_MODEL , CRITIC_AGENT_URL, OPENAI_KEY, HUGGINGFACE_TOKEN, WANDB_TOKEN
 from pathlib import Path
 import os
@@ -76,33 +76,33 @@ class ConfigurationManager:
 
         return finetune_config 
     
-    def get_inference_config(self):
+    def get_distillation_inference_config(self):
         gen_config = self.config.generated_reviews
-        inference_config = InferenceConfig(
-                                            checkpoint_path      = self.params.CHECKPOINT_PATH       ,
-                                            cache_dir            = self.params.CACHE_DIR             ,
-                                            baseline             = self.params.BASELINE              ,
-                                            use_quantization     = self.params.USE_QUANTIZATION      ,
-                                            generated_data_path  = gen_config.generated_reviews_path ,
-                                            composer_agent_query = COMPOSER_AGENT_QUERY              ,
-                                            train_ratio          = self.params.TRAIN_RATIO           ,
-                                            val_ratio            = self.params.VAL_RATIO             ,
-                                            test_ratio           = self.params.TEST_RATIO            ,
-                                            seed                 = self.params.SEED                  ,
-                                            inference_subset     = self.params.INFERENCE_SUBSET      ,
-                                            results_path         = self.params.RESULTS_PATH          ,
-                                            per_device_batch_size= self.params.PER_DEVICE_BATCH_SIZE ,
-                                            max_new_tokens       = self.params.MAX_NEW_TOKENS        ,
-                                            temperature          = self.params.TEMPERATURE           ,
-                                            top_p                = self.params.TOP_P                 ,
-                                            top_k                = self.params.TOP_K                 ,
-                                            num_return_sequences = self.params.NUM_RETURN_SEQUENCES  ,
-                                            num_beams            = self.params.NUM_BEAMS             ,
-                                            repetition_penalty   = self.params.REPETITION_PENALTY    ,
-                                            no_repeat_ngram_size = self.params.NO_REPEAT_NGRAM_SIZE  ,
-                                            huggingface_token    = HUGGINGFACE_TOKEN
-                                          )
-        return inference_config
+        inference_distillation_config = DistillationInferenceConfig(
+                                                                    checkpoint_path      = self.params.CHECKPOINT_PATH       ,
+                                                                    cache_dir            = self.params.CACHE_DIR             ,
+                                                                    baseline             = self.params.BASELINE              ,
+                                                                    use_quantization     = self.params.USE_QUANTIZATION      ,
+                                                                    generated_data_path  = gen_config.generated_reviews_path ,
+                                                                    composer_agent_query = COMPOSER_AGENT_QUERY              ,
+                                                                    train_ratio          = self.params.TRAIN_RATIO           ,
+                                                                    val_ratio            = self.params.VAL_RATIO             ,
+                                                                    test_ratio           = self.params.TEST_RATIO            ,
+                                                                    seed                 = self.params.SEED                  ,
+                                                                    inference_subset     = self.params.INFERENCE_SUBSET      ,
+                                                                    results_path         = self.params.RESULTS_PATH          ,
+                                                                    per_device_batch_size= self.params.PER_DEVICE_BATCH_SIZE ,
+                                                                    max_new_tokens       = self.params.MAX_NEW_TOKENS        ,
+                                                                    temperature          = self.params.TEMPERATURE           ,
+                                                                    top_p                = self.params.TOP_P                 ,
+                                                                    top_k                = self.params.TOP_K                 ,
+                                                                    num_return_sequences = self.params.NUM_RETURN_SEQUENCES  ,
+                                                                    num_beams            = self.params.NUM_BEAMS             ,
+                                                                    repetition_penalty   = self.params.REPETITION_PENALTY    ,
+                                                                    no_repeat_ngram_size = self.params.NO_REPEAT_NGRAM_SIZE  ,
+                                                                    huggingface_token    = HUGGINGFACE_TOKEN
+                                                                )
+        return inference_distillation_config
 
     def get_classification_config(self):
         inferred_config       = self.config.inferred_reviews
@@ -128,5 +128,13 @@ class ConfigurationManager:
                                                         cache_dir                   = self.params.CACHE_DIR
                                                     )
         return classification_config
+    
+    def get_classification_inference_config(self):
+        classification_inference_config = ClassificationInferenceConfig(
+                                                                          checkpoint_path      = 'deberta-finetuned-from-llama-8b' ,
+                                                                          classified_data_path = self.params.CLASSIFIED_DATA_PATH 
+                                                                        )
+        return classification_inference_config
+
 
     

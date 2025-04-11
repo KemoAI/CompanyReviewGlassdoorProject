@@ -58,7 +58,7 @@ class FineTuningConfig:
     wandb_token: str
 
 @dataclass(frozen=False)
-class InferenceConfig:
+class DistillationInferenceConfig:
     checkpoint_path: str
     cache_dir: str
     baseline: bool
@@ -102,3 +102,9 @@ class ClassificationConfig:
     use_best: bool
     report_to: str
     cache_dir: str
+
+@dataclass(frozen=False)
+class ClassificationInferenceConfig:
+    checkpoint_path: str
+    classified_data_path : str
+    

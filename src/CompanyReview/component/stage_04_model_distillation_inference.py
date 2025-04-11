@@ -17,11 +17,11 @@ import wandb
 from huggingface_hub import login
 
 from CompanyReview import logger
-from CompanyReview.entity.config_entity import InferenceConfig
+from CompanyReview.entity.config_entity import DistillationInferenceConfig
 from CompanyReview.utils import utils
 
-class ModelInference:
-    def __init__(self, config: InferenceConfig):
+class ModelDistillationInference:
+    def __init__(self, config: DistillationInferenceConfig):
         self.config       = config
         ratios_sum        = self.config.train_ratio + self.config.val_ratio + self.config.test_ratio
         normalized_ratios = np.array([self.config.train_ratio , self.config.val_ratio, self.config.test_ratio]) / ratios_sum

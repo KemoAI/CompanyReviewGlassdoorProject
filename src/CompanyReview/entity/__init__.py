@@ -1,1 +1,1 @@
-from CompanyReview.entity.config_entity import ( DataSourceConfig , AgenticFrameworkConfig, FineTuningConfig, InferenceConfig, ClassificationConfig)
+from CompanyReview.entity.config_entity import ( DataSourceConfig , AgenticFrameworkConfig, FineTuningConfig, DistillationInferenceConfig, ClassificationConfig)

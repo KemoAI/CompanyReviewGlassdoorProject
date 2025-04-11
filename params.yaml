@@ -53,4 +53,6 @@ NUM_EPOCHS: 4
 LEARNING_RATE: 3.0e-6
 WARMUP_RATIO: 0.1
 
+CLASSIFIED_DATA_PATH: 'Inference/inference_test_set.csv'
+
 

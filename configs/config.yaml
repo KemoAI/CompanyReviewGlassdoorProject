@@ -8,4 +8,4 @@ generated_reviews:
   generated_reviews_path: data/final_reviews_cleaned_r1.csv
 
 inferred_reviews:
-  inferred_reviews_path: inference/
+  inferred_reviews_path: Inference/
