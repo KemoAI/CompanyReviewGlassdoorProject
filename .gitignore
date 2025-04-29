@@ -180,4 +180,5 @@ downloaded_models/
 llama-3.1-8B-finetuned/
 deberta-finetuned-from-llama-8B/
 Inference/
+appy.py
 
