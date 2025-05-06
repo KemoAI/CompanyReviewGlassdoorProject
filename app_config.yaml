@@ -1,0 +1,10 @@
+composer_checkpoint_path: './llama-3.1-8B-finetuned/'
+classifier_checkpoint_path: './deberta-finetuned-from-llama-8B/'
+device: 'cpu'
+cache_dir: './downloaded_models/'
+max_new_tokens: 210
+temperature: 0.5
+top_p: 0.95
+top_k: 30
+num_return_sequences: 1
+num_beams: 3
